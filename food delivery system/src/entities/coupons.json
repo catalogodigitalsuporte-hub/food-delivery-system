@@ -1,0 +1,98 @@
+
+{
+  "name": "coupons",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["code", "type", "value", "isActive", "validFrom", "validUntil", "createdAt"],
+        "properties": {
+          "code": {
+            "bsonType": "string",
+            "description": "Código do cupom"
+          },
+          "name": {
+            "bsonType": "string",
+            "description": "Nome do cupom"
+          },
+          "description": {
+            "bsonType": "string",
+            "description": "Descrição do cupom"
+          },
+          "type": {
+            "bsonType": "string",
+            "enum": ["percentage", "fixed", "free-delivery"],
+            "description": "Tipo de desconto"
+          },
+          "value": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor do desconto"
+          },
+          "minimumOrderValue": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor mínimo do pedido"
+          },
+          "maxDiscount": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Desconto máximo"
+          },
+          "usageLimit": {
+            "bsonType": "int",
+            "minimum": 0,
+            "description": "Limite de uso total"
+          },
+          "usageCount": {
+            "bsonType": "int",
+            "minimum": 0,
+            "description": "Quantidade de usos"
+          },
+          "userLimit": {
+            "bsonType": "int",
+            "minimum": 0,
+            "description": "Limite por usuário"
+          },
+          "applicableRestaurants": {
+            "bsonType": "array",
+            "items": { "bsonType": "string" },
+            "description": "Restaurantes aplicáveis"
+          },
+          "applicableCategories": {
+            "bsonType": "array",
+            "items": { "bsonType": "string" },
+            "description": "Categorias aplicáveis"
+          },
+          "isActive": {
+            "bsonType": "bool",
+            "description": "Status ativo"
+          },
+          "validFrom": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Válido a partir de"
+          },
+          "validUntil": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Válido até"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

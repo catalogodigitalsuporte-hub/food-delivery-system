@@ -1,0 +1,83 @@
+
+{
+  "name": "user_addresses",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["userId", "street", "city", "zipCode", "isDefault", "createdAt"],
+        "properties": {
+          "userId": {
+            "bsonType": "string",
+            "description": "ID do usuário"
+          },
+          "label": {
+            "bsonType": "string",
+            "description": "Rótulo do endereço (Casa, Trabalho, etc.)"
+          },
+          "street": {
+            "bsonType": "string",
+            "description": "Rua"
+          },
+          "number": {
+            "bsonType": "string",
+            "description": "Número"
+          },
+          "complement": {
+            "bsonType": "string",
+            "description": "Complemento"
+          },
+          "neighborhood": {
+            "bsonType": "string",
+            "description": "Bairro"
+          },
+          "city": {
+            "bsonType": "string",
+            "description": "Cidade"
+          },
+          "state": {
+            "bsonType": "string",
+            "description": "Estado"
+          },
+          "zipCode": {
+            "bsonType": "string",
+            "description": "CEP"
+          },
+          "reference": {
+            "bsonType": "string",
+            "description": "Ponto de referência"
+          },
+          "coordinates": {
+            "bsonType": "object",
+            "properties": {
+              "latitude": { "bsonType": "number" },
+              "longitude": { "bsonType": "number" }
+            },
+            "description": "Coordenadas GPS"
+          },
+          "isDefault": {
+            "bsonType": "bool",
+            "description": "Endereço padrão"
+          },
+          "deliveryInstructions": {
+            "bsonType": "string",
+            "description": "Instruções de entrega"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

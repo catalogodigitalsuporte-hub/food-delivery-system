@@ -1,0 +1,94 @@
+
+{
+  "name": "revendas",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["email", "senha", "nomeEmpresa", "status", "criadoEm", "atualizadoEm"],
+        "properties": {
+          "email": {
+            "bsonType": "string",
+            "description": "Email de acesso da revenda"
+          },
+          "senha": {
+            "bsonType": "string",
+            "description": "Senha de acesso da revenda (hash)"
+          },
+          "nomeEmpresa": {
+            "bsonType": "string",
+            "description": "Nome da empresa/revenda"
+          },
+          "telefone": {
+            "bsonType": "string",
+            "description": "Telefone WhatsApp da revenda"
+          },
+          "endereco": {
+            "bsonType": "string",
+            "description": "Endereço da revenda"
+          },
+          "horarioFuncionamento": {
+            "bsonType": "string",
+            "description": "Horário de funcionamento"
+          },
+          "descricao": {
+            "bsonType": "string",
+            "description": "Descrição da empresa"
+          },
+          "imagemCapa": {
+            "bsonType": "string",
+            "description": "URL da imagem de capa"
+          },
+          "logo": {
+            "bsonType": "string",
+            "description": "URL do logo da empresa"
+          },
+          "tema": {
+            "bsonType": "object",
+            "properties": {
+              "corPrimaria": {
+                "bsonType": "string",
+                "description": "Cor primária do tema"
+              },
+              "corSecundaria": {
+                "bsonType": "string",
+                "description": "Cor secundária do tema"
+              },
+              "corAcento": {
+                "bsonType": "string",
+                "description": "Cor de acento"
+              }
+            },
+            "description": "Configurações de tema/cores"
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": ["ativo", "inativo", "suspenso"],
+            "description": "Status da revenda"
+          },
+          "linkCatalogo": {
+            "bsonType": "string",
+            "description": "Link único do catálogo da revenda"
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          },
+          "criadoPor": {
+            "bsonType": "string",
+            "description": "ID do usuário que criou"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

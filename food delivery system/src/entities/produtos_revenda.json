@@ -1,0 +1,83 @@
+
+{
+  "name": "produtos_revenda",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["revendaId", "nome", "preco", "categoria", "disponivel", "criadoEm"],
+        "properties": {
+          "revendaId": {
+            "bsonType": "string",
+            "description": "ID da revenda proprietária"
+          },
+          "nome": {
+            "bsonType": "string",
+            "description": "Nome do produto"
+          },
+          "descricao": {
+            "bsonType": "string",
+            "description": "Descrição do produto"
+          },
+          "preco": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Preço do produto"
+          },
+          "precoOriginal": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Preço original (para promoções)"
+          },
+          "categoria": {
+            "bsonType": "string",
+            "description": "Categoria do produto"
+          },
+          "imagem": {
+            "bsonType": "string",
+            "description": "URL da imagem do produto"
+          },
+          "disponivel": {
+            "bsonType": "bool",
+            "description": "Se o produto está disponível"
+          },
+          "promocao": {
+            "bsonType": "bool",
+            "description": "Se o produto está em promoção"
+          },
+          "avaliacao": {
+            "bsonType": "number",
+            "minimum": 0,
+            "maximum": 5,
+            "description": "Avaliação do produto (0-5)"
+          },
+          "numeroAvaliacoes": {
+            "bsonType": "int",
+            "minimum": 0,
+            "description": "Número de avaliações"
+          },
+          "tags": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "string"
+            },
+            "description": "Tags do produto"
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

@@ -1,0 +1,102 @@
+
+{
+  "name": "restaurants",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["name", "category", "address", "phone", "isOpen", "deliveryFee", "minimumOrder", "deliveryTime", "rating", "createdAt"],
+        "properties": {
+          "name": {
+            "bsonType": "string",
+            "description": "Nome do restaurante"
+          },
+          "description": {
+            "bsonType": "string",
+            "description": "Descrição do restaurante"
+          },
+          "category": {
+            "bsonType": "string",
+            "enum": ["brasileira", "italiana", "japonesa", "chinesa", "mexicana", "pizza", "hamburger", "saudavel", "doces", "bebidas", "padaria", "lanchonete"],
+            "description": "Categoria do restaurante"
+          },
+          "imageUrl": {
+            "bsonType": "string",
+            "description": "URL da imagem do restaurante"
+          },
+          "address": {
+            "bsonType": "object",
+            "required": ["street", "city", "zipCode"],
+            "properties": {
+              "street": { "bsonType": "string" },
+              "number": { "bsonType": "string" },
+              "neighborhood": { "bsonType": "string" },
+              "city": { "bsonType": "string" },
+              "state": { "bsonType": "string" },
+              "zipCode": { "bsonType": "string" }
+            }
+          },
+          "phone": {
+            "bsonType": "string",
+            "description": "Telefone do restaurante"
+          },
+          "email": {
+            "bsonType": "string",
+            "description": "Email do restaurante"
+          },
+          "isOpen": {
+            "bsonType": "bool",
+            "description": "Status de funcionamento"
+          },
+          "deliveryFee": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Taxa de entrega"
+          },
+          "minimumOrder": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Pedido mínimo"
+          },
+          "deliveryTime": {
+            "bsonType": "string",
+            "description": "Tempo estimado de entrega"
+          },
+          "rating": {
+            "bsonType": "number",
+            "minimum": 0,
+            "maximum": 5,
+            "description": "Avaliação do restaurante"
+          },
+          "totalReviews": {
+            "bsonType": "int",
+            "minimum": 0,
+            "description": "Total de avaliações"
+          },
+          "openingHours": {
+            "bsonType": "object",
+            "description": "Horários de funcionamento"
+          },
+          "paymentMethods": {
+            "bsonType": "array",
+            "items": { "bsonType": "string" },
+            "description": "Métodos de pagamento aceitos"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

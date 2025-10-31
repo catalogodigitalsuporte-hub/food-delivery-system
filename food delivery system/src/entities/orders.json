@@ -1,0 +1,159 @@
+
+{
+  "name": "orders",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["userId", "restaurantId", "items", "totalAmount", "status", "deliveryAddress", "paymentMethod", "createdAt"],
+        "properties": {
+          "userId": {
+            "bsonType": "string",
+            "description": "ID do usuário"
+          },
+          "restaurantId": {
+            "bsonType": "string",
+            "description": "ID do restaurante"
+          },
+          "orderNumber": {
+            "bsonType": "string",
+            "description": "Número do pedido"
+          },
+          "items": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "required": ["menuItemId", "name", "price", "quantity"],
+              "properties": {
+                "menuItemId": { "bsonType": "string" },
+                "name": { "bsonType": "string" },
+                "price": { "bsonType": "number" },
+                "quantity": { "bsonType": "int", "minimum": 1 },
+                "customizations": {
+                  "bsonType": "array",
+                  "items": {
+                    "bsonType": "object",
+                    "properties": {
+                      "name": { "bsonType": "string" },
+                      "options": { "bsonType": "array", "items": { "bsonType": "string" } },
+                      "price": { "bsonType": "number" }
+                    }
+                  }
+                },
+                "specialInstructions": { "bsonType": "string" }
+              }
+            },
+            "description": "Itens do pedido"
+          },
+          "subtotal": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Subtotal dos itens"
+          },
+          "deliveryFee": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Taxa de entrega"
+          },
+          "serviceFee": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Taxa de serviço"
+          },
+          "discount": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Desconto aplicado"
+          },
+          "totalAmount": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor total"
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": ["pendente", "confirmado", "preparando", "pronto", "saiu-entrega", "entregue", "cancelado"],
+            "description": "Status do pedido"
+          },
+          "deliveryAddress": {
+            "bsonType": "object",
+            "required": ["street", "city", "zipCode"],
+            "properties": {
+              "street": { "bsonType": "string" },
+              "number": { "bsonType": "string" },
+              "complement": { "bsonType": "string" },
+              "neighborhood": { "bsonType": "string" },
+              "city": { "bsonType": "string" },
+              "state": { "bsonType": "string" },
+              "zipCode": { "bsonType": "string" },
+              "reference": { "bsonType": "string" }
+            }
+          },
+          "paymentMethod": {
+            "bsonType": "string",
+            "enum": ["dinheiro", "cartao-credito", "cartao-debito", "pix", "vale-refeicao"],
+            "description": "Método de pagamento"
+          },
+          "paymentStatus": {
+            "bsonType": "string",
+            "enum": ["pendente", "processando", "aprovado", "recusado", "estornado"],
+            "description": "Status do pagamento"
+          },
+          "estimatedDeliveryTime": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Tempo estimado de entrega"
+          },
+          "actualDeliveryTime": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Tempo real de entrega"
+          },
+          "deliveryPersonId": {
+            "bsonType": "string",
+            "description": "ID do entregador"
+          },
+          "trackingCode": {
+            "bsonType": "string",
+            "description": "Código de rastreamento"
+          },
+          "customerNotes": {
+            "bsonType": "string",
+            "description": "Observações do cliente"
+          },
+          "restaurantNotes": {
+            "bsonType": "string",
+            "description": "Observações do restaurante"
+          },
+          "cancelReason": {
+            "bsonType": "string",
+            "description": "Motivo do cancelamento"
+          },
+          "rating": {
+            "bsonType": "int",
+            "minimum": 1,
+            "maximum": 5,
+            "description": "Avaliação do pedido"
+          },
+          "review": {
+            "bsonType": "string",
+            "description": "Comentário da avaliação"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

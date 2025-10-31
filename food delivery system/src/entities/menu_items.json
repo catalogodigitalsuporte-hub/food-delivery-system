@@ -1,0 +1,119 @@
+
+{
+  "name": "menu_items",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["restaurantId", "name", "price", "category", "isAvailable", "createdAt"],
+        "properties": {
+          "restaurantId": {
+            "bsonType": "string",
+            "description": "ID do restaurante"
+          },
+          "name": {
+            "bsonType": "string",
+            "description": "Nome do item"
+          },
+          "description": {
+            "bsonType": "string",
+            "description": "Descrição do item"
+          },
+          "price": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Preço do item"
+          },
+          "originalPrice": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Preço original (para promoções)"
+          },
+          "category": {
+            "bsonType": "string",
+            "enum": ["entrada", "prato-principal", "sobremesa", "bebida", "lanche", "pizza", "combo", "promocao"],
+            "description": "Categoria do item"
+          },
+          "imageUrl": {
+            "bsonType": "string",
+            "description": "URL da imagem do item"
+          },
+          "isAvailable": {
+            "bsonType": "bool",
+            "description": "Disponibilidade do item"
+          },
+          "preparationTime": {
+            "bsonType": "int",
+            "minimum": 0,
+            "description": "Tempo de preparo em minutos"
+          },
+          "ingredients": {
+            "bsonType": "array",
+            "items": { "bsonType": "string" },
+            "description": "Lista de ingredientes"
+          },
+          "allergens": {
+            "bsonType": "array",
+            "items": { "bsonType": "string" },
+            "description": "Lista de alérgenos"
+          },
+          "nutritionalInfo": {
+            "bsonType": "object",
+            "properties": {
+              "calories": { "bsonType": "int" },
+              "protein": { "bsonType": "number" },
+              "carbs": { "bsonType": "number" },
+              "fat": { "bsonType": "number" },
+              "fiber": { "bsonType": "number" }
+            },
+            "description": "Informações nutricionais"
+          },
+          "customizations": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "name": { "bsonType": "string" },
+                "type": { "bsonType": "string", "enum": ["single", "multiple"] },
+                "required": { "bsonType": "bool" },
+                "options": {
+                  "bsonType": "array",
+                  "items": {
+                    "bsonType": "object",
+                    "properties": {
+                      "name": { "bsonType": "string" },
+                      "price": { "bsonType": "number" }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Opções de personalização"
+          },
+          "isPromotion": {
+            "bsonType": "bool",
+            "description": "Se é item promocional"
+          },
+          "promotionEndDate": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data fim da promoção"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}
